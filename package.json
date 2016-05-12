@@ -4,7 +4,9 @@
   "description": "Obtain behaviors from Personality Insights' profiles. Behaviors present in this component are based on scientific research.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run jshint && (npm run codecov || true)",
+    "jshint": "jshint --exclude ./node_modules/",
+    "codecov": "istanbul cover ./node_modules/mocha/bin/_mocha && codecov"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,19 @@
   "bugs": {
     "url": "https://github.com/personality-insights/behaviors/issues"
   },
-  "homepage": "https://github.com/personality-insights/behaviors#readme"
+  "homepage": "https://github.com/personality-insights/behaviors#readme",
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-minify": "0.0.11",
+    "istanbul": "^0.4.3",
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "winston": "^2.2.0"
+  }
 }

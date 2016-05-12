@@ -1,0 +1,26 @@
+{
+  "name": "personality-behaviors",
+  "description": "Obtain behaviors from Personality Insights' profiles. Behaviors present in this component are based on scientific research.",
+  "main": "dist/behaviors.min.js",
+  "authors": [
+    "Ary Pablo Batista <arypbatista@gmail.com>"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "personality",
+    "insights",
+    "behaviors",
+    "personality",
+    "watson",
+    "ibm"
+  ],
+  "homepage": "https://github.com/personality-insights/behaviors",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
