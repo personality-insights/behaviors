@@ -1,0 +1,27 @@
+{
+  "name": "personality-behaviors",
+  "version": "0.0.0",
+  "description": "Obtain behaviors from Personality Insights' profiles. Behaviors present in this component are based on scientific research.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/personality-insights/behaviors.git"
+  },
+  "keywords": [
+    "personality",
+    "insights",
+    "behaviors",
+    "personality",
+    "watson",
+    "ibm"
+  ],
+  "author": "Ary Pablo Batista <arypbatista@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/personality-insights/behaviors/issues"
+  },
+  "homepage": "https://github.com/personality-insights/behaviors#readme"
+}
