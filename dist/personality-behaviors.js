@@ -881,7 +881,7 @@ var PersonalityBehaviors = function () {
   function PersonalityBehaviors(options) {
     _classCallCheck(this, PersonalityBehaviors);
 
-    this._options = extend(this.defaultOptions, pick(options, 'locale', 'markdown', 'formatted'));
+    this._options = extend(this.defaultOptions(), pick(options, 'locale', 'format'));
     this._i18n = new I18nData(this._options.locale);
     extend(this, _data);
   }
@@ -891,8 +891,7 @@ var PersonalityBehaviors = function () {
     value: function defaultOptions() {
       return {
         locale: 'en',
-        formatted: false,
-        markdown: false
+        format: 'plain'
       };
     }
   }, {
@@ -911,12 +910,13 @@ var PersonalityBehaviors = function () {
     value: function _asBehaviors(scenario) {
       var _this2 = this;
 
+      var formatOptions = this._options;
       var behaviors = scenario.persona.map(function (p) {
         return {
           id: p.replace('persona.', 'behavior.'),
           name: _this2._description('personas', p).name,
           verb: scenario.verb,
-          description: formatText(scenario.tooltip, _this2._options)
+          description: formatText(scenario.tooltip, formatOptions)
         };
       });
 
@@ -1016,15 +1016,24 @@ module.exports = scoredScenarios;
 
 'use strict';
 
-var html = require('marked');
+var marked = require('marked');
 var unmarked = require('remove-markdown');
 
-function plain(text) {
-  return unmarked(text).replace(' How did we get this?');
-}
-
 function formatText(text, options) {
-  return options.formatted ? options.markdown ? text : html(text) : plain(text);
+  var formatters = {
+    plain: function plain(text) {
+      return unmarked(text).replace(' How did we get this?', '');
+    },
+    html: function html(text) {
+      return marked(text);
+    },
+    markdown: function markdown(text) {
+      return text;
+    }
+  };
+
+  var format = formatters[options.format];
+  return format(text);
 }
 
 module.exports = formatText;
