@@ -8,10 +8,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 
     <style>
-      #profile pre, #behaviors pre {
+      #profile pre, #output pre {
         max-height: 100%;
       }
 
+      #behaviors {
+        text-align: justify;
+      }
 
     </style>
   </head>
@@ -26,8 +29,10 @@
           <div id="profile" class=""></div>
         </div>
         <div class="col-sm-6 col-xs-12">
-          <h2>Behaviors</h2>
+          <h2>Behavior Cards</h2>
           <div id="behaviors"></div>
+          <h2>Component Output</h2>
+          <div id="output"></div>
         </div>
       </div>
       </div>
@@ -44,7 +49,17 @@
         var personalityBehaviors = new PersonalityBehaviors('en'),
             behaviors = personalityBehaviors.behaviors(profile);
 
-        $('#behaviors').append(pre(behaviors))
+
+        behaviors.forEach(function (b) {
+          $('#behaviors').append([
+            '<div class="well">',
+              '<p> A <strong>', b.name, '</strong> is likely to <strong>', b.verb, '</strong>.</p>',
+              '<p> <strong>Who is likely to manifest this behavior?</strong><br/>', b.description, '</p>',
+            '</div>'
+          ].join(''));
+        });
+
+        $('#output').append(pre(behaviors))
 
         $('#profile').append(pre(profile));
       });
