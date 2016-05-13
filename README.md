@@ -11,15 +11,19 @@ Obtain behaviors from Personality Insights' profiles. Behaviors present in this 
 ## Getting Started
 
 1. Require and instance `personality-behaviors` component
+
   ```JavaScript
   const PersonalityBehaviors = require('personality-behaviors');
   const personalityBehaviors = new PersonalityBehaviors({ locale: 'es' });
   ```
+
 2. Get profile's behavior
+
   ```JavaScript
   const profile = require('./resources/profile');
   const behaviors = personalityBehaviors.behaviors(profile);
   ```
+  
 3. Render behaviors somewhere! Try rendering them as cards!
 
 See the complete [example code][example_code] or [try it live][live_example]
