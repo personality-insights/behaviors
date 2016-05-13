@@ -1,7 +1,7 @@
 {
   "name": "personality-behaviors",
   "description": "Obtain behaviors from Personality Insights' profiles. Behaviors present in this component are based on scientific research.",
-  "main": "dist/behaviors.min.js",
+  "main": "dist/personality-behaviors.min.js",
   "authors": [
     "Ary Pablo Batista <arypbatista@gmail.com>"
   ],
