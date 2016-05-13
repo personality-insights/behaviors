@@ -99,36 +99,40 @@
   ],
   "industries": [
     {
-      "id": "scenario.retail",
+      "id": "industry.retail",
       "name": "Retail"
     },
     {
-      "id": "scenario.food",
+      "id": "industry.food",
       "name": "Food"
     },
     {
-      "id": "scenario.sports",
+      "id": "industry.sports",
       "name": "Sports"
     },
     {
-      "id": "scenario.finance",
+      "id": "industry.finance",
       "name": "Financial"
     },
     {
-      "id": "scenario.healthcare",
+      "id": "industry.healthcare",
       "name": "Healthcare"
     },
     {
-      "id": "scenario.fitness",
+      "id": "industry.fitness",
       "name": "Fitness"
     },
     {
-      "id": "scenario.media",
+      "id": "industry.media",
       "name": "Media"
     },
     {
-      "id": "scenario.travel",
+      "id": "industry.travel",
       "name": "Travel"
+    },
+    {
+      "id": "industry.no_industry",
+      "name": "No Industry"
     }
   ],
   "categories": [

@@ -24,13 +24,13 @@ const log        = require('winston');
 const minify     = require('gulp-minify');
 
 gulp.task('build', () =>
-  browserify('index.js')
+  browserify({ entries: ['index.js'], standalone: 'PersonalityBehaviors' })
     .transform(babelify)
     .bundle()
-    .pipe(source('behaviors.js'))
+    .pipe(source('personality-behaviors.js'))
     .pipe(gulp.dest('dist'))
     .pipe(minify())
-    .pipe(source('behaviors.min.js'))
+    .pipe(source('personality-behaviors.min.js'))
     .pipe(gulp.dest('dist'))
 );
 

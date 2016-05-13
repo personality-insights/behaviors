@@ -1,6 +1,6 @@
 {
   "name": "personality-behaviors",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Obtain behaviors from Personality Insights' profiles. Behaviors present in this component are based on scientific research.",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
+    "codecov": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-minify": "0.0.11",
     "istanbul": "^0.4.3",
@@ -38,6 +39,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "underscore": "^1.8.3",
     "winston": "^2.2.0"
   }
 }

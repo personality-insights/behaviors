@@ -16,4 +16,4 @@
 
 'use strict';
 
-module.exports = require('./lib/behaviors');
+module.exports = require('./lib/personality-behaviors');
