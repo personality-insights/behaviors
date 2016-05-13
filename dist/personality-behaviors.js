@@ -851,7 +851,7 @@ var _ = require('underscore'),
     extend = _.extend,
     pick = _.pick;
 
-var log = require('winston');
+var log = console;
 
 var I18nData = require('./i18n');
 var scoredScenarios = require('./scored-scenarios');
@@ -879,17 +879,11 @@ var _data = buildData(require('./data/scenarios'), require('./data/targets'));
 
 var PersonalityBehaviors = function () {
   function PersonalityBehaviors(options) {
-    var _this = this;
-
     _classCallCheck(this, PersonalityBehaviors);
 
     this._options = extend(this.defaultOptions, pick(options, 'locale', 'markdown', 'formatted'));
     this._i18n = new I18nData(this._options.locale);
     extend(this, _data);
-
-    _.keys(_data).forEach(function (k) {
-      return log.info('Adding ' + k + ' : ' + _this[k]);
-    });
   }
 
   _createClass(PersonalityBehaviors, [{
@@ -904,23 +898,23 @@ var PersonalityBehaviors = function () {
   }, {
     key: 'behaviors',
     value: function behaviors(profile, filterOptions) {
-      var _this2 = this;
+      var _this = this;
 
       return scoredScenarios(profile, this._scenarios, this._targets).map(function (s) {
-        return extend(s, _this2._description('scenarios', s.id));
+        return extend(s, _this._description('scenarios', s.id));
       }).reduce(function (res, s) {
-        return res.concat(_this2._asBehaviors(s));
+        return res.concat(_this._asBehaviors(s));
       }, []);
     }
   }, {
     key: '_asBehaviors',
     value: function _asBehaviors(scenario) {
-      var _this3 = this;
+      var _this2 = this;
 
       var behaviors = scenario.persona.map(function (p) {
         return {
           id: p.replace('persona.', 'behavior.'),
-          name: _this3._description('personas', p).name,
+          name: _this2._description('personas', p).name,
           verb: scenario.verb,
           description: scenario.tooltip
         };
@@ -941,10 +935,10 @@ var PersonalityBehaviors = function () {
   }, {
     key: '_collection',
     value: function _collection(type) {
-      var _this4 = this;
+      var _this3 = this;
 
       return this['_' + type].map(function (id) {
-        return _this4._description(type, id);
+        return _this3._description(type, id);
       });
     }
   }, {
@@ -959,7 +953,7 @@ var PersonalityBehaviors = function () {
 
 module.exports = PersonalityBehaviors;
 
-},{"./data/scenarios":2,"./data/targets":3,"./i18n":5,"./scored-scenarios":7,"underscore":156,"winston":161}],7:[function(require,module,exports){
+},{"./data/scenarios":2,"./data/targets":3,"./i18n":5,"./scored-scenarios":7,"underscore":156}],7:[function(require,module,exports){
 /**
  * Copyright 2016 IBM Corp. All Rights Reserved.
  *
