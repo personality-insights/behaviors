@@ -42,7 +42,7 @@
       $.getJSON('./resources/profile.json', '', function ( profile ) {
 
         var personalityBehaviors = new PersonalityBehaviors('en'),
-            behaviors = personalityBehaviors.behaviors(data);
+            behaviors = personalityBehaviors.behaviors(profile);
 
         $('#behaviors').append(pre(behaviors))
 
