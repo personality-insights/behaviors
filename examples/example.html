@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <title>Behaviors for Personality Insights</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://rawgit.com/personality-insights/behaviors/master/dist/behaviors.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      #profile pre, #behaviors pre {
+        max-height: 100%;
+      }
+
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Behaviors for Personality Insights</h1>
+      <p class="lead">Use it to discover behaviors from a Personality Insights profile.</p>
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h2>Personality Profile</h2>
+          <div id="profile" class=""></div>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <h2>Behaviors</h2>
+          <div id="behaviors"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <script>
+
+      function pre(data) {
+        return '<pre>' + JSON.stringify(data, null, '  ') + '</pre>';
+      }
+
+      $.getJSON('./resources/profile.json', '', function ( profile ) {
+
+        var personalityBehaviors = new PersonalityBehaviors('en'),
+            behaviors = personalityBehaviors.behaviors(data);
+
+        $('#behaviors').append(pre(behaviors))
+
+        $('#profile').append(pre(profile));
+      });
+
+    </script>
+
+  </body>
+</html>
