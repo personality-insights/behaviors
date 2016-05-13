@@ -25,7 +25,7 @@ const minify     = require('gulp-minify');
 
 gulp.task('build', () =>
   browserify({ entries: ['index.js'], standalone: 'PersonalityBehaviors' })
-    .transform(babelify)
+    .transform(babelify, { presets: ['es2015'] })
     .bundle()
     .pipe(source('personality-behaviors.js'))
     .pipe(gulp.dest('dist'))

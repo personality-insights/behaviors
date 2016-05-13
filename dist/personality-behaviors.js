@@ -770,40 +770,56 @@ module.exports={
 
 'use strict';
 
-const _ = require('underscore'),
-      contains = _.contains,
-      keys = _.keys;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-const byId = require('../utilities/list-of-objects').byId;
-const log = require('winston');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-const dictionaries = {
+var _ = require('underscore'),
+    contains = _.contains,
+    keys = _.keys;
+
+var byId = require('../utilities/list-of-objects').byId;
+var log = require('winston');
+
+var dictionaries = {
   'en': require('./en')
 };
 
-class TypeData {
+var TypeData = function () {
+  function TypeData(type, descriptions) {
+    _classCallCheck(this, TypeData);
 
-  constructor(type, descriptions) {
     this._descriptions = descriptions;
     this._type = type;
   }
 
-  id(id) {
-    return byId(this._descriptions, id);
-  }
-}
+  _createClass(TypeData, [{
+    key: 'id',
+    value: function id(_id) {
+      return byId(this._descriptions, _id);
+    }
+  }]);
 
-class I18nData {
+  return TypeData;
+}();
 
-  constructor(locale) {
+var I18nData = function () {
+  function I18nData(locale) {
+    _classCallCheck(this, I18nData);
+
     this._locale = contains(keys(dictionaries), locale) ? locale : 'en';
     this._dictionary = dictionaries[this._locale];
   }
 
-  type(type) {
-    return new TypeData(type, this._dictionary[type]);
-  }
-}
+  _createClass(I18nData, [{
+    key: 'type',
+    value: function type(_type) {
+      return new TypeData(_type, this._dictionary[_type]);
+    }
+  }]);
+
+  return I18nData;
+}();
 
 module.exports = I18nData;
 
@@ -826,25 +842,29 @@ module.exports = I18nData;
 
 'use strict';
 
-const _ = require('underscore'),
-      union = _.union,
-      extend = _.extend,
-      pick = _.pick;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-const log = require('winston');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-const I18nData = require('./i18n');
-const scoredScenarios = require('./scored-scenarios');
+var _ = require('underscore'),
+    union = _.union,
+    extend = _.extend,
+    pick = _.pick;
+
+var log = require('winston');
+
+var I18nData = require('./i18n');
+var scoredScenarios = require('./scored-scenarios');
 
 function buildData(scenarios, targets) {
-  const data = {
+  var data = {
     _scenarios: [],
     _scenariosById: {},
     _industries: [],
     _personas: [],
     _categories: []
   };
-  scenarios.forEach(s => {
+  scenarios.forEach(function (s) {
     data._categories = union(data._categories, s.categories);
     data._industries = union(data._industries, s.industries);
     data._personas = union(data._personas, s.persona);
@@ -855,60 +875,87 @@ function buildData(scenarios, targets) {
   return data;
 }
 
-const _data = buildData(require('./data/scenarios'), require('./data/targets'));
+var _data = buildData(require('./data/scenarios'), require('./data/targets'));
 
-class PersonalityBehaviors {
+var PersonalityBehaviors = function () {
+  function PersonalityBehaviors(options) {
+    var _this = this;
 
-  constructor(options) {
+    _classCallCheck(this, PersonalityBehaviors);
+
     this._options = extend(this.defaultOptions, pick(options, 'locale', 'markdown', 'formatted'));
     this._i18n = new I18nData(this._options.locale);
     extend(this, _data);
 
-    _.keys(_data).forEach(k => log.info(`Adding ${ k } : ${ this[k] }`));
-  }
-
-  defaultOptions() {
-    return {
-      locale: 'en',
-      formatted: false,
-      markdown: false
-    };
-  }
-
-  behaviors(profile, filterOptions) {
-    return scoredScenarios(profile, this._scenarios, this._targets).map(s => extend(s, this._description('scenarios', s.id))).reduce((res, s) => res.concat(this._asBehaviors(s)), []);
-  }
-
-  _asBehaviors(scenario) {
-    const behaviors = scenario.persona.map(p => {
-      return {
-        id: p.replace('persona.', 'behavior.'),
-        name: this._description('personas', p).name,
-        verb: scenario.verb,
-        description: scenario.tooltip
-      };
+    _.keys(_data).forEach(function (k) {
+      return log.info('Adding ' + k + ' : ' + _this[k]);
     });
-
-    return behaviors;
   }
 
-  categories() {
-    return this._collection('categories');
-  }
+  _createClass(PersonalityBehaviors, [{
+    key: 'defaultOptions',
+    value: function defaultOptions() {
+      return {
+        locale: 'en',
+        formatted: false,
+        markdown: false
+      };
+    }
+  }, {
+    key: 'behaviors',
+    value: function behaviors(profile, filterOptions) {
+      var _this2 = this;
 
-  industries() {
-    return this._collection('industries');
-  }
+      return scoredScenarios(profile, this._scenarios, this._targets).map(function (s) {
+        return extend(s, _this2._description('scenarios', s.id));
+      }).reduce(function (res, s) {
+        return res.concat(_this2._asBehaviors(s));
+      }, []);
+    }
+  }, {
+    key: '_asBehaviors',
+    value: function _asBehaviors(scenario) {
+      var _this3 = this;
 
-  _collection(type) {
-    return this[`_${ type }`].map(id => this._description(type, id));
-  }
+      var behaviors = scenario.persona.map(function (p) {
+        return {
+          id: p.replace('persona.', 'behavior.'),
+          name: _this3._description('personas', p).name,
+          verb: scenario.verb,
+          description: scenario.tooltip
+        };
+      });
 
-  _description(type, id) {
-    return this._i18n.type(type).id(id);
-  }
+      return behaviors;
+    }
+  }, {
+    key: 'categories',
+    value: function categories() {
+      return this._collection('categories');
+    }
+  }, {
+    key: 'industries',
+    value: function industries() {
+      return this._collection('industries');
+    }
+  }, {
+    key: '_collection',
+    value: function _collection(type) {
+      var _this4 = this;
 
-}
+      return this['_' + type].map(function (id) {
+        return _this4._description(type, id);
+      });
+    }
+  }, {
+    key: '_description',
+    value: function _description(type, id) {
+      return this._i18n.type(type).id(id);
+    }
+  }]);
+
+  return PersonalityBehaviors;
+}();
 
 module.exports = PersonalityBehaviors;
 
@@ -931,18 +978,28 @@ module.exports = PersonalityBehaviors;
 
 'use strict';
 
-const Profile = require('./utilities/profile');
-const byId = require('./utilities/list-of-objects').byId;
-const _ = require('underscore'),
-      extend = _.extend;
+var Profile = require('./utilities/profile');
+var byId = require('./utilities/list-of-objects').byId;
+var _ = require('underscore'),
+    extend = _.extend;
 
-const scoreTrait = (target, p) => eval(target.score);
+var scoreTrait = function scoreTrait(target, p) {
+  return eval(target.score);
+};
 
-const scenarioScore = (profile, scenario, targets) => scenario.traits.reduce((acc, trait) => acc + scoreTrait(profile.getTrait(trait.id), byId(targets, trait.target)), 0) / scenario.traits.length;
+var scenarioScore = function scenarioScore(profile, scenario, targets) {
+  return scenario.traits.reduce(function (acc, trait) {
+    return acc + scoreTrait(profile.getTrait(trait.id), byId(targets, trait.target));
+  }, 0) / scenario.traits.length;
+};
 
-const scoredScenarios = (profile, scenarios, targets) => scenarios.map(scenario => extend(scenario, {
-  score: scenarioScore(new Profile(profile), scenario, targets)
-}));
+var scoredScenarios = function scoredScenarios(profile, scenarios, targets) {
+  return scenarios.map(function (scenario) {
+    return extend(scenario, {
+      score: scenarioScore(new Profile(profile), scenario, targets)
+    });
+  });
+};
 
 module.exports = scoredScenarios;
 
@@ -965,31 +1022,39 @@ module.exports = scoredScenarios;
 
 'use strict';
 
-const _ = require('underscore'),
-      keys = _.keys;
+var _ = require('underscore'),
+    keys = _.keys;
 
 function matches(query, o) {
-  return keys(query).reduce((conclusion, k) => conclusion && o[k] == query[k], true);
+  return keys(query).reduce(function (conclusion, k) {
+    return conclusion && o[k] == query[k];
+  }, true);
 }
 
 function filter(ls, query) {
-  return ls.filter(o => matches(query, o));
+  return ls.filter(function (o) {
+    return matches(query, o);
+  });
 }
 
 function byId(ls, id) {
-  return filter(ls, { id })[0];
+  return filter(ls, { id: id })[0];
 }
 
 module.exports = {
-  byId,
-  filter,
-  matches
+  byId: byId,
+  filter: filter,
+  matches: matches
 };
 
 },{"underscore":156}],9:[function(require,module,exports){
 (function (global){
+"use strict";
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 !function (e) {
-  if ("object" == typeof exports) module.exports = e();else if ("function" == typeof define && define.amd) define(e);else {
+  if ("object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports))) module.exports = e();else if ("function" == typeof define && define.amd) define(e);else {
     var f;"undefined" != typeof window ? f = window : "undefined" != typeof global ? f = global : "undefined" != typeof self && (f = self), f.Profile = e();
   }
 }(function () {
@@ -1002,7 +1067,9 @@ module.exports = {
           var n = t[o][1][e];return s(n ? n : e);
         }, f, f.exports, e, t, n, r);
       }return n[o].exports;
-    }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) s(r[o]);return s;
+    }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) {
+      s(r[o]);
+    }return s;
   }({ 1: [function (_dereq_, module, exports) {
 
       /*
