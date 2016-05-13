@@ -10,15 +10,33 @@ Obtain behaviors from Personality Insights' profiles. Behaviors present in this 
 
 ## Using the component
 
-To be written...
-
 ```JavaScript
-/* TO BE WRITTEN */
+const PersonalityBehaviors = require('personality-behaviors');
+const profile = require('./resources/profile');
+
+const personalityBehaviors = new PersonalityBehaviors({ locale: 'es' });
+
+const behaviors = personalityBehaviors.behaviors(profile);
+const financeBehaviors = personalityBehaviors.behaviors(profile, { categories: ['finance'] });
+
+const categories = personalityBehaviors.categories();
 ```
+
+As browser script the component will be exported as the global variable `PersonalityBehaviors`.
 
 ## API Methods
 
-To be written...
-
 The available methods are the following ones:
-  - `method :: type` - description.
+  - `constructor :: (Options) -> PersonalityBehaviors` - Obtain an instance of `PersonalityBehaviors`.
+  - `behaviors  :: (Profile, FilterOptions) -> [Behavior]` - Calculate the list of behaviors that apply to the given Personality Insights `Profile`.
+  - `categories :: [Category]` - List of categories available.
+  - `industries :: [Industry]` - List of industries available.
+
+Definitions:
+ - `Profile` is a IBM Watson Personality Insights profile which is basically the service JSON output, parsed into a JavaScript `Object`.
+ - `Options` are options for the behaviors component. Available options are:
+   - `locale` - A `String` with the locale used to generate the labels.
+ - `FilterOptions` are filter options for the behaviors matching.
+   - `categories` - A `String` or `[String]` with the categories to include.
+   - `industries` - A `String` or `[String]` with the industries to include.
+ - `Category` and `Industry` are `String`s.
