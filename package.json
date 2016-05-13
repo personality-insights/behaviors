@@ -41,6 +41,8 @@
     "winston": "^2.2.0"
   },
   "dependencies": {
+    "marked": "^0.3.5",
+    "remove-markdown": "^0.1.0",
     "underscore": "^1.8.3"
   }
 }
