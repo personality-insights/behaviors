@@ -30,6 +30,8 @@ See the complete [example code][example_code] or [try it live][live_example]
 
 There are more features available such as:
 
+- Including the component as a browser script. Component will be exported as the global variable `PersonalityBehaviors`.
+
 - Filtering behaviors by category, industry or both!
 ```JavaScript
 const financeBehaviors = personalityBehaviors.behaviors(profile, { category: ['finance'] });
@@ -42,7 +44,13 @@ const industries = personalityBehaviors.industries();
 const categories = personalityBehaviors.categories();
 ```
 
-- Include the component as a browser script. Component will be exported as the global variable `PersonalityBehaviors`.
+- Formatting descriptions in html or markdown optionally!
+```JavaScript
+const personalityBehaviors = new PersonalityBehaviors({ format:'html' });
+const mediaBehaviors = personalityBehaviors.behaviors(profile, { industry: ['media'] });
+```
+
+
 
 ## API Methods
 
@@ -56,6 +64,7 @@ Definitions:
  - `Profile` is a IBM Watson Personality Insights profile which is basically the service JSON output, parsed into a JavaScript `Object`.
  - `Options` are options for the behaviors component. Available options are:
    - `locale` - A `String` with the locale used to generate the labels.
+   - `format` - A `String` with format. Available formats are `["plain", "html", "markdown"]`.
  - `FilterOptions` are filter options for the behaviors matching.
    - `category` - A `String` or `[String]` with the categories to include.
    - `industry` - A `String` or `[String]` with the industries to include.
