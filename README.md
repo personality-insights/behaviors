@@ -8,21 +8,39 @@
 
 Obtain behaviors from Personality Insights' profiles. Behaviors present in this component are based on scientific research.
 
-## Using the component
+## Getting Started
 
+1. Require and instance `personality-behaviors` component
 ```JavaScript
 const PersonalityBehaviors = require('personality-behaviors');
-const profile = require('./resources/profile');
-
 const personalityBehaviors = new PersonalityBehaviors({ locale: 'es' });
+```
 
+2. Get profile's behavior
+```JavaScript
+const profile = require('./resources/profile');
 const behaviors = personalityBehaviors.behaviors(profile);
-const financeBehaviors = personalityBehaviors.behaviors(profile, { categories: ['finance'] });
+```
 
+3. Render behaviors somewhere! Try rendering them as cards!
+
+See the complete [example code][example_code] or [try it live][live_example]
+
+There are more features available such as:
+
+- Filtering behaviors by category, industry or both!
+```JavaScript
+const financeBehaviors = personalityBehaviors.behaviors(profile, { category: ['finance'] });
+const mediaBehaviors = personalityBehaviors.behaviors(profile, { industry: ['media'] });
+```
+
+- Get category and industry listings
+```JavaScript
+const industries = personalityBehaviors.industries();
 const categories = personalityBehaviors.categories();
 ```
 
-As browser script the component will be exported as the global variable `PersonalityBehaviors`.
+- Include the component as a browser script. Component will be exported as the global variable `PersonalityBehaviors`.
 
 ## API Methods
 
