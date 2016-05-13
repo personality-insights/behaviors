@@ -37,6 +37,6 @@ Definitions:
  - `Options` are options for the behaviors component. Available options are:
    - `locale` - A `String` with the locale used to generate the labels.
  - `FilterOptions` are filter options for the behaviors matching.
-   - `categories` - A `String` or `[String]` with the categories to include.
-   - `industries` - A `String` or `[String]` with the industries to include.
+   - `category` - A `String` or `[String]` with the categories to include.
+   - `industry` - A `String` or `[String]` with the industries to include.
  - `Category` and `Industry` are `String`s.
