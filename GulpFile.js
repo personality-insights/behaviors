@@ -20,20 +20,31 @@ const gulp       = require('gulp');
 const browserify = require('browserify');
 const babelify   = require('babelify');
 const source     = require('vinyl-source-stream');
+const rename     = require('gulp-rename');
 const log        = require('winston');
-const minify     = require('gulp-minify');
+const uglify     = require('gulp-uglify');
 
-gulp.task('build', () =>
+
+const bundle = () =>
   browserify({ entries: ['index.js'], standalone: 'PersonalityBehaviors' })
     .transform(babelify, { presets: ['es2015'] })
-    .bundle()
-    .pipe(source('personality-behaviors.js'))
-    .pipe(gulp.dest('dist'))
-    .pipe(minify())
-    .pipe(source('personality-behaviors.min.js'))
+    .bundle();
+
+gulp.task('build-dist-min', () =>
+  gulp.src('dist/personality-behaviors.js')
+    .pipe(uglify())
+    .pipe(rename('personality-behaviors.min.js'))
     .pipe(gulp.dest('dist'))
 );
 
-gulp.task('info', () => log.info('Build this package with command `gulp build`'))
+gulp.task('build-dist', () =>
+  bundle()
+    .pipe(source('personality-behaviors.js'))
+    .pipe(gulp.dest('dist'))
+);
+
+gulp.task('build', ['build-dist', 'build-dist-min'])
+
+gulp.task('info', () => log.info('Build this package with command `gulp build`'));
 
 gulp.task('default', ['info']);
