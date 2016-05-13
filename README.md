@@ -26,6 +26,8 @@ const behaviors = personalityBehaviors.behaviors(profile);
 
 See the complete [example code][example_code] or [try it live][live_example]
 
+## More Features
+
 There are more features available such as:
 
 - Filtering behaviors by category, industry or both!
