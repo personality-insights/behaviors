@@ -1,0 +1,12 @@
+[
+  {
+    "id": "H",
+    "name": "High",
+    "score": "p"
+  },
+  {
+    "id": "L",
+    "name": "Low",
+    "score": "1 - p"
+  }
+]
