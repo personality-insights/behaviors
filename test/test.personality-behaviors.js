@@ -43,4 +43,10 @@ describe('behaviors', () => {
     assert.equal(behaviors[0].name, 'Green Lover', 'Got expected behavior');
   });
 
+  it('test behavior without format', () => {
+    const personalityBehaviors = new PersonalityBehaviors();
+    const behaviors = personalityBehaviors.behaviors(require('./resources/profile'), { formatted : false });
+    assert.isOk(behaviors[0].description.indexOf('**') == -1, 'Got plain text');
+  });
+
 });
