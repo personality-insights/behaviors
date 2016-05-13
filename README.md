@@ -58,3 +58,6 @@ Definitions:
    - `category` - A `String` or `[String]` with the categories to include.
    - `industry` - A `String` or `[String]` with the industries to include.
  - `Category` and `Industry` are `String`s.
+
+ [example_code]: https://github.com/personality-insights/behaviors/blob/master/examples/example.html
+ [live_example]: https://rawgit.com/personality-insights/behaviors/master/examples/example.html
