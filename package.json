@@ -1,6 +1,6 @@
 {
   "name": "personality-behaviors",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Obtain behaviors from Personality Insights' profiles. Behaviors present in this component are based on scientific research.",
   "main": "index.js",
   "scripts": {
