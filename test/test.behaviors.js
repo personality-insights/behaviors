@@ -40,7 +40,11 @@ describe('behaviors', () => {
   it('test behavior', () => {
     const personalityBehaviors = new PersonalityBehaviors();
     const behaviors = personalityBehaviors.behaviors(require('./resources/profile'), { industry: 'no_industry', category: ['risk'] });
-    assert.equal(behaviors[0].name, 'Green Lover', 'Got expected behavior');
+    assert.equal(behaviors[0].name, 'Green Lover', 'Got expected behavior name');
+    assert.equal(behaviors[0].score, 0.42935318921548377, 'Got expected behavior score');
+
+    assert.equal(behaviors[8].name, 'Risk Taker', 'Got expected behavior name');
+    assert.equal(behaviors[8].score, 0.34521581362525805, 'Got expected behavior score');
   });
 
 });

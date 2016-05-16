@@ -916,7 +916,8 @@ var PersonalityBehaviors = function () {
           id: p.replace('persona.', 'behavior.'),
           name: _this2._description('personas', p).name,
           verb: scenario.verb,
-          description: formatText(scenario.tooltip, formatOptions)
+          description: formatText(scenario.tooltip, formatOptions),
+          score: scenario.score
         };
       });
 
@@ -977,13 +978,13 @@ var byId = require('./utilities/list-of-objects').byId;
 var _ = require('underscore'),
     extend = _.extend;
 
-var scoreTrait = function scoreTrait(target, p) {
+var scoreTrait = function scoreTrait(p, target) {
   return eval(target.score);
 };
 
 var scenarioScore = function scenarioScore(profile, scenario, targets) {
   return scenario.traits.reduce(function (acc, trait) {
-    return acc + scoreTrait(profile.getTrait(trait.id), byId(targets, trait.target));
+    return acc + scoreTrait(profile.getTrait(trait.id).percentage, byId(targets, trait.target));
   }, 0) / scenario.traits.length;
 };
 
