@@ -22,7 +22,7 @@
       "id": "scenario.healthy_food",
       "name": "Alimentos Saludables",
       "verb": "Comprar alimentos saludables",
-      "tooltip": "Las personas que muestran más **responsabilidad**, **autodisciplina**, e incluso **intereses artísticos** que otras, son más propensas a comer alimentos saludables. Sin embargo, más **susceptibilidad al estrés**, **rango emocional **, y **desmesura** disminuyen esa probabilidad. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherHealth)"
+      "tooltip": "Las personas que muestran más **responsabilidad**, **autodisciplina**, e incluso **intereses artísticos** que otras, son más propensas a comer alimentos saludables. Sin embargo, más **susceptibilidad al estrés**, **rango emocional**, y **desmesura** disminuyen esa probabilidad. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherHealth)"
     },
     {
       "id": "scenario.adventure_sports",
@@ -34,7 +34,7 @@
       "id": "scenario.financial_risk",
       "name": "Riesgo Financiero",
       "verb": "Correr riesgos financieros",
-      "tooltip": "Las personas que muestran más **apertura a experiencias ** que otras, raramente hacen inversiones de riesgo. Mostrar más **rango emocional ** reduce esa probabilidad. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherRisk)"
+      "tooltip": "Las personas que muestran más **apertura a experiencias** que otras, raramente hacen inversiones de riesgo. Mostrar más **rango emocional** reduce esa probabilidad. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherRisk)"
     },
     {
       "id": "scenario.recreate_risk",
@@ -46,13 +46,13 @@
       "id": "scenario.avoid_risk",
       "name": "Avoid Risk",
       "verb": "Avoid taking risks",
-      "tooltip": "Las personas que muestran más **amabilidad**, **rango emocional ** y **responsabilidad** que otras, son más propensas a evitar correr riesgos. Mostrar más **extroversión** aumenta la probabilidad de correr riesgos. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherRisk)"
+      "tooltip": "Las personas que muestran más **amabilidad**, **rango emocional** y **responsabilidad** que otras, son más propensas a evitar correr riesgos. Mostrar más **extroversión** aumenta la probabilidad de correr riesgos. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherRisk)"
     },
     {
       "id": "scenario.health_risk",
       "name": "Riesgo de Salud ",
       "verb": "Poner la salud en riesgo",
-      "tooltip": "Las personas que muestran más **extroversión**, **rango emocional ** y menos **amabilidad** que otras, son propensas a poner su salud en riesgo. Mostrar más **responsabilidad** disminuye esta probabilidad. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherRisk)"
+      "tooltip": "Las personas que muestran más **extroversión**, **rango emocional** y menos **amabilidad** que otras, son propensas a poner su salud en riesgo. Mostrar más **responsabilidad** disminuye esta probabilidad. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherRisk)"
     },
     {
       "id": "scenario.career_risk",
@@ -64,7 +64,7 @@
       "id": "scenario.excercise",
       "name": "Ejercicio",
       "verb": "Gastar en salud y actividad física",
-      "tooltip": "Las personas que muestran más **extroversión** y **responsabilidad** que otras, son más propensas a ejercitar con frecuencia. Más **rango emocional ** reduce esa probabilidad. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherHealth)"
+      "tooltip": "Las personas que muestran más **extroversión** y **responsabilidad** que otras, son más propensas a ejercitar con frecuencia. Más **rango emocional** reduce esa probabilidad. [¿Cómo obtuvimos esto?](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/applied.shtml#otherHealth)"
     },
     {
       "id": "scenario.adaptability",
