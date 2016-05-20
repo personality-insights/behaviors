@@ -34,7 +34,7 @@ describe('i18n (ja)', () => {
     const data = new I18nData('ja');
     const scenarioData = data.type('scenarios').id('scenario.healthy_food');
     //to-do: this test needs to be replaced once scenario "names" have been translated in the JA i18n file
-    assert.equal(scenarioData.name, 'Healthy Food', 'Got expected scenario data');
+    assert.equal(scenarioData.name, '健康的な食品', 'Got expected scenario data');
   });
 
   it('get description for industry', () => {
