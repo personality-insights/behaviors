@@ -1323,10 +1323,13 @@ function buildData(scenarios, targets) {
     _categories: []
   };
   scenarios.forEach(function (s) {
-    data._categories = union(data._categories, s.categories);
-    data._industries = union(data._industries, s.industries);
-    data._personas = union(data._personas, s.persona);
-    data._scenariosById[s.id] = s;
+    //Skip if hidden is true
+    if (!s.hidden) {
+      data._categories = union(data._categories, s.categories);
+      data._industries = union(data._industries, s.industries);
+      data._personas = union(data._personas, s.persona);
+      data._scenariosById[s.id] = s;
+    }
   });
   data._scenarios = [].concat(scenarios);
   data._targets = targets;
@@ -2790,7 +2793,8 @@ function escape(html, encode) {
 }
 
 function unescape(html) {
-  return html.replace(/&([#\w]+);/g, function(_, n) {
+	// explicitly match decimal, hex, and named HTML entities 
+  return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
     n = n.toLowerCase();
     if (n === 'colon') return ':';
     if (n.charAt(0) === '#') {
