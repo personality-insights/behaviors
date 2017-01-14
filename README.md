@@ -1,5 +1,8 @@
+# DEPRECATED: This module was supersed by the new Personality Insights v3 API
+
+---
+
 # Behaviors for Personality Insights
-## DEPRECATED: This module was supersed by the new Personality Insights v3 API
 
 Obtain behaviors from Personality Insights' profiles. Behaviors present in this component are based on scientific research.
 
